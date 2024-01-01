@@ -7,6 +7,7 @@ const Map = dynamic(() => import('../components/Map'), { ssr: false })
 export default function Home() {
   return (
     <main>
+      <div className={styles.box}> Hello World</div>
       <Map />
     </main>
   )

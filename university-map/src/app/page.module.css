@@ -1,0 +1,11 @@
+.box {
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    text-align: center;
+    width: 400px;
+    height: 100%;
+    left: 0px;
+    margin-left: 0px; /* half of the width */
+    background-color:red;
+}
