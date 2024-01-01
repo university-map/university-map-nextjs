@@ -19,6 +19,8 @@ function Map() {
       zoom={13}
       scrollWheelZoom={true}
       style={{ height: "100%" }}
+      /* use bottomright zoom control instead */
+      zoomControl={false}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
