@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import { Menu } from 'antd';
 import Image from 'next/image';
 import styles from './InfoCard.module.css'
-import { Menu } from 'antd';
 import InfoCardOverview from './InfoCardOverview';
+import DataLoader from '@/services/DataLoader';
 
 const InfoCard: React.FC = () => {
+  const t = useTranslations('InfoCard');
+
+  const fetchData = async () => {
+    const dataLoader = DataLoader.getInstance();
+    const data = await dataLoader.loadData('universities/Taiwan/National-Cheng-Kung-University/_data.yml');
+    console.log(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const [selectedMenuItem, setSelectedMenuItem] = useState('overview');
   const menuSwtich = (key: any) => {
     switch (key) {
@@ -29,8 +43,8 @@ const InfoCard: React.FC = () => {
         國立成功大學
       </div>
       <Menu mode='horizontal' selectedKeys={['selectedMenuItem']} onClick={(e) => setSelectedMenuItem(e.key)}>
-        <Menu.Item key='overview'>總覽</Menu.Item>
-        <Menu.Item key='rankings'>排名</Menu.Item>
+        <Menu.Item key='overview'>{t('overview')}</Menu.Item>
+        <Menu.Item key='rankings'>{t('rankings')}</Menu.Item>
       </Menu>
       <div className={styles.MenuItemArea}>
         {menuSwtich(selectedMenuItem)}

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Carousel, Divider } from 'antd';
 import styles from './InfoCardOverview.module.css';
 
@@ -11,6 +12,8 @@ const images: string[] = [
 ];
 
 const InfoCardOverview: React.FC = () => {
+  const t = useTranslations('InfoCard');
+
   return (
     <div>
       <div className={styles.Description}>
@@ -20,7 +23,7 @@ const InfoCardOverview: React.FC = () => {
       </div>
       <Divider />
       <div className={styles.SectionTitle}>
-        相片
+        {t('gallery')}
       </div>
       <Carousel autoplay={true} >
         {images.map((image, index) => (
