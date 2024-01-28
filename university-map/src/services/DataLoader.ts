@@ -18,7 +18,7 @@ class DataLoader implements IDataLoader {
     return DataLoader.instance;
   }
 
-  async loadData(filePath: string): Promise<any> {
+  public async loadData(filePath: string): Promise<any> {
     try {
       const response = await fetch(filePath);
       const data = await response.text();
@@ -27,6 +27,10 @@ class DataLoader implements IDataLoader {
       console.error('Error loading YAML file:', error);
       return null;
     }
+  }
+
+  public async getUniversityIndex(country: string) {
+
   }
 }
 

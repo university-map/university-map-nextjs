@@ -1,3 +1,6 @@
 locations:
   - name: "Main Campus"
     coordinates: [22.9987772261614, 120.21648234565666]
+  - name: "Guiren Campus"
+    coordinates: [22.93788805281445, 120.27485576268575]
+acronym: "NCKU"
