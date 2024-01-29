@@ -11,8 +11,8 @@ const InfoCard: React.FC = () => {
 
   const fetchData = async () => {
     const dataLoader = DataLoader.getInstance();
-    const data = await dataLoader.loadData('universities/Taiwan/National-Cheng-Kung-University/_data.yml');
-    console.log(data);
+    const data = await dataLoader.loadData('universities/Taiwan/National Cheng Kung University/_data.yml');
+    const data2 = await dataLoader.getUnivLocations();
   };
 
   useEffect(() => {
