@@ -13,8 +13,42 @@ const markerIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
+const MapMarker: React.FC<{
+  country: string,
+  universityName: string,
+  coordinates: L.LatLngTuple,
+  locationName: string,
+  onMarkerClick: (country: string, universityName: string) => void
+}> = ({
+  country,
+  universityName,
+  coordinates,
+  locationName,
+  onMarkerClick
+}) => {
+  return (
+    <Marker
+      position={coordinates}
+      icon={markerIcon}
+      eventHandlers={{
+        click: (e) => {
+          onMarkerClick(country, universityName);
+        },
+      }}
+    >
+      <Popup>
+        <div style={{ textAlign: 'center' }}>
+          {universityName}
+          <br />
+          ({locationName})
+        </div>
+      </Popup>
+    </Marker>
+  );
+}
+
 const Map: React.FC<{
-  onMarkerClick: (content: string) => void 
+  onMarkerClick: (country: string, universityName: string) => void 
 }> = ({
   onMarkerClick
 }) => {
@@ -28,23 +62,14 @@ const Map: React.FC<{
       for (const univ of univLocations) {
         for (const location of univ.locations) {
           newMarkers.push(
-            <Marker
-              position={location.coordinates}
-              icon={markerIcon}
-              eventHandlers={{
-                click: (e) => {
-                  console.log('marker clicked', e)
-                },
-              }}
-            >
-              <Popup>
-                < div style={{ textAlign: 'center' }}>
-                  {univ.name}
-                  <br />
-                  ({location.name})
-                </div>
-              </Popup>
-            </Marker>
+            <MapMarker
+              key={`${univ.country}@${univ.name}@${location.name}`}
+              country={univ.country}
+              universityName={univ.name}
+              coordinates={location.coordinates}
+              locationName={location.name}
+              onMarkerClick={onMarkerClick}
+            />
           );
         }
       }

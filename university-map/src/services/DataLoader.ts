@@ -1,10 +1,10 @@
+import { parseCookies } from 'nookies';
 import yaml from 'js-yaml';
 import { Location, UniversityLocation, UniversityInfo } from './models';
 
 interface IDataLoader {
-  loadData(filePath: string): Promise<any>;
   getUnivLocations(): Promise<UniversityLocation[]>
-  getUnivInfo(country: string, university: string, language: string): Promise<UniversityInfo>
+  getUnivInfo(country: string, university: string): Promise<UniversityInfo>
 }
 
 class DataLoader implements IDataLoader {
@@ -19,17 +19,6 @@ class DataLoader implements IDataLoader {
       DataLoader.instance = new DataLoader();
     }
     return DataLoader.instance;
-  }
-
-  public async loadData(filePath: string): Promise<any> {
-    try {
-      const response = await fetch(filePath);
-      const data = await response.text();
-      return yaml.load(data);
-    } catch (error) {
-      console.error('Error loading YAML file:', error);
-      return null;
-    }
   }
 
   public async getUnivLocations(): Promise<UniversityLocation[]> {
@@ -54,20 +43,23 @@ class DataLoader implements IDataLoader {
   public async getUnivInfo(
     country: string = 'Taiwan',
     university: string = 'National Cheng Kung University',
-    language: string = 'zh-TW'): Promise<UniversityInfo> {
+  ): Promise<UniversityInfo> {
     try {
-      const response = await fetch(`universities/${country}/${university}/${language}.yml`)
+      const cookies = parseCookies();
+      const locale = cookies.NEXT_LOCALE;
+      const response = await fetch(`universities/${country}/${university}/${locale}.yml`)
       const data = yaml.load(await response.text()) as any;
       return new UniversityInfo(
-        data.language,
+        locale,
         data.name,
         data.address,
+        data.banner,
         data.introduction,
         data.gallery
       );
     } catch (error) {
       console.error('Error loading university info:', error);
-      return Promise.resolve(new UniversityInfo('', '', '', '', []));
+      return Promise.resolve(new UniversityInfo());
     }
   }
 }
