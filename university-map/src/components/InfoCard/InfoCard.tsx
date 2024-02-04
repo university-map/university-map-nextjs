@@ -5,24 +5,17 @@ import Image from 'next/image';
 import styles from './InfoCard.module.css'
 import InfoCardOverview from './InfoCardOverview';
 import DataLoader from '@/services/DataLoader';
+import { UniversityInfo } from '@/services/models';
 
-const InfoCard: React.FC = () => {
+const InfoCard: React.FC<{
+  universityInfo: UniversityInfo,
+}> = (props) => {
   const t = useTranslations('InfoCard');
-
-  const fetchData = async () => {
-    const dataLoader = DataLoader.getInstance();
-    const data = await dataLoader.loadData('universities/Taiwan/National Cheng Kung University/_data.yml');
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const [selectedMenuItem, setSelectedMenuItem] = useState('overview');
   const menuSwtich = (key: any) => {
     switch (key) {
       case 'overview':
-        return (<InfoCardOverview />);
+        return (<InfoCardOverview universityInfo={props.universityInfo} />);
       case 'rankings':
         return (<h3>Coming Soon.</h3>);
       default:
@@ -35,13 +28,17 @@ const InfoCard: React.FC = () => {
       <div className={styles.Banner}>
         <Image
           fill sizes='100vw' alt='University Banner' style={{ objectFit: 'cover' }}
-          src='https://web.ncku.edu.tw/var/file/0/1000/img/495849468.jpg'
+          src={props.universityInfo.banner}
         />
       </div>
       <div className={styles.Title}>
-        國立成功大學
+        {props.universityInfo.name}
       </div>
-      <Menu mode='horizontal' selectedKeys={['selectedMenuItem']} onClick={(e) => setSelectedMenuItem(e.key)}>
+      <Menu
+        mode='horizontal'
+        selectedKeys={['selectedMenuItem']}
+        onClick={(e) => setSelectedMenuItem(e.key)}
+      >
         <Menu.Item key='overview'>{t('overview')}</Menu.Item>
         {/* <Menu.Item key='rankings'>{t('rankings')}</Menu.Item> */}
       </Menu>
