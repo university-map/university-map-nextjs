@@ -12,7 +12,6 @@ const InfoCard: React.FC = () => {
   const fetchData = async () => {
     const dataLoader = DataLoader.getInstance();
     const data = await dataLoader.loadData('universities/Taiwan/National Cheng Kung University/_data.yml');
-    const data2 = await dataLoader.getUnivLocations();
   };
 
   useEffect(() => {
@@ -44,7 +43,7 @@ const InfoCard: React.FC = () => {
       </div>
       <Menu mode='horizontal' selectedKeys={['selectedMenuItem']} onClick={(e) => setSelectedMenuItem(e.key)}>
         <Menu.Item key='overview'>{t('overview')}</Menu.Item>
-        <Menu.Item key='rankings'>{t('rankings')}</Menu.Item>
+        {/* <Menu.Item key='rankings'>{t('rankings')}</Menu.Item> */}
       </Menu>
       <div className={styles.MenuItemArea}>
         {menuSwtich(selectedMenuItem)}
