@@ -1,18 +1,5 @@
 [
   {
-    "name": "National Taiwan University",
-    "country": "Taiwan",
-    "location": [
-      {
-        "name": "Main Campus",
-        "coordinates": [
-          25.017491194856326,
-          121.53968742646664
-        ]
-      }
-    ]
-  },
-  {
     "name": "National Cheng Kung University",
     "country": "Taiwan",
     "location": [
@@ -28,6 +15,19 @@
         "coordinates": [
           22.93788805281445,
           120.27485576268575
+        ]
+      }
+    ]
+  },
+  {
+    "name": "National Taiwan University",
+    "country": "Taiwan",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          25.017491194856326,
+          121.53968742646664
         ]
       }
     ]

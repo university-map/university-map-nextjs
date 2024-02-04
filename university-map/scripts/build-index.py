@@ -35,7 +35,7 @@ def main():
         universities = [d for d in os.listdir(country_path)]
         for univ in universities:
             univObj = { "name": univ, "country": country }
-            file_path = os.path.join(country_path, univ, "_data.yml")
+            file_path = os.path.join(country_path, univ, "en.yml")
             univObj["location"] = get_univ_locations(file_path)
             index_data.append(univObj)
 

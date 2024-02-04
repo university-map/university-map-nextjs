@@ -8,10 +8,10 @@ import DataLoader from '@/services/DataLoader';
 
 const InfoCard: React.FC = () => {
   const t = useTranslations('InfoCard');
-
   const fetchData = async () => {
     const dataLoader = DataLoader.getInstance();
-    const data = await dataLoader.loadData('universities/Taiwan/National Cheng Kung University/_data.yml');
+    const data = await dataLoader.getUnivInfo('Taiwan', 'National Cheng Kung University', 'zh-TW');
+    console.log(data);
   };
 
   useEffect(() => {

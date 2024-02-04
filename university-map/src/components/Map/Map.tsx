@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import DataLoader from '@/services/DataLoader';
-import { UniversityLocation } from '@/services/models';
 import 'leaflet/dist/leaflet.css';
 
 const markerIcon = new L.Icon({
@@ -14,7 +13,11 @@ const markerIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-const Map: React.FC = () => {
+const Map: React.FC<{
+  onMarkerClick: (content: string) => void 
+}> = ({
+  onMarkerClick
+}) => {
   const [markers, setMarkers] = useState([] as any[]);
   const dataLoader = DataLoader.getInstance();
 
@@ -28,6 +31,11 @@ const Map: React.FC = () => {
             <Marker
               position={location.coordinates}
               icon={markerIcon}
+              eventHandlers={{
+                click: (e) => {
+                  console.log('marker clicked', e)
+                },
+              }}
             >
               <Popup>
                 < div style={{ textAlign: 'center' }}>

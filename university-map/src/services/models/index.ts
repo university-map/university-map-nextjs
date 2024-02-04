@@ -1,6 +1,7 @@
-import { Location, UniversityLocation } from "./MapData"
+import { Location, UniversityLocation, UniversityInfo } from "./UniversityData"
 
 export {
   Location,
-  UniversityLocation
+  UniversityLocation,
+  UniversityInfo
 }
