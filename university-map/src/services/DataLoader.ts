@@ -9,6 +9,7 @@ interface IDataLoader {
 
 class DataLoader implements IDataLoader {
   private static instance: DataLoader | null = null;
+  private static cookies = parseCookies();
 
   private constructor() {
     // Private constructor to prevent direct instantiation
@@ -45,17 +46,28 @@ class DataLoader implements IDataLoader {
     university: string = 'National Cheng Kung University',
   ): Promise<UniversityInfo> {
     try {
-      const cookies = parseCookies();
-      const locale = cookies.NEXT_LOCALE;
-      const response = await fetch(`universities/${country}/${university}/${locale}.yml`)
-      const data = yaml.load(await response.text()) as any;
+      const locale = DataLoader.cookies.NEXT_LOCALE;
+      let localeData = null;
+      if (locale !== 'en') {
+        const response = await fetch(`universities/${country}/${university}/${locale}.yml`)
+        if (response.ok) {
+          localeData = yaml.load(await response.text()) as any;
+        }
+      }
+
+      let enData = null;
+      const response = await fetch(`universities/${country}/${university}/en.yml`)
+      if (response.ok) {
+        enData = yaml.load(await response.text()) as any;
+      }
+
       return new UniversityInfo(
         locale,
-        data.name,
-        data.address,
-        data.banner,
-        data.introduction,
-        data.gallery
+        localeData?.name ?? enData?.name ?? '',
+        localeData?.address ?? enData?.address ?? '',
+        localeData?.banner ?? enData?.banner ?? '',
+        localeData?.introduction ?? enData?.introduction ?? '',
+        localeData?.gallery ?? enData?.gallery ?? [],
       );
     } catch (error) {
       console.error('Error loading university info:', error);
