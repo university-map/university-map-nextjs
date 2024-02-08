@@ -1,30 +1,17 @@
 'use client'
-import { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic'
-import DataLoader from '@/services/DataLoader';
-import { UniversityInfo } from '@/services/models';
-
-const InfoCard = dynamic(() => import('@/components/InfoCard/InfoCard'), { ssr: false });
-const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false })
+import { useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 
 export default function Home() {
-  const [selectedUniv, setSelectedUniv] = useState(new UniversityInfo());
-  const dataLoader = DataLoader.getInstance();
-  const updateSelectedUniv = async (country: string, universityName: string): Promise<void> => {
-    const univInfo = await dataLoader.getUnivInfo(country, universityName);
-    setSelectedUniv(univInfo);
-  };
+  const router = useRouter();
+  const { locale, country, university } = useParams();
 
   useEffect(() => {
-    const defaultCountry = 'Taiwan';
-    const defaultUniversity = 'National Cheng Kung University';
-    updateSelectedUniv(defaultCountry, defaultUniversity);
+    const newRoute = `/${encodeURIComponent(locale as string || 'en')}/university/${encodeURIComponent(country as string || 'Taiwan')}/${encodeURIComponent(university as string || 'National Cheng Kung University')}`;
+    router.replace(newRoute);
   }, []);
 
   return (
-    <main>
-      <InfoCard universityInfo={selectedUniv} />
-      <Map onMarkerClick={updateSelectedUniv} />
-    </main>
-  )
+    <main></main>
+  );
 }

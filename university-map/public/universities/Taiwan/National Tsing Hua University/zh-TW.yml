@@ -1,0 +1,6 @@
+name: "國立清華大學"
+address: "臺灣新竹市光復路二段101號"
+locations:
+  - name: "校本部"
+    coordinates: [24.796893583808767, 120.99644335317485]
+acronyms: ["NTHU", "清大"]
