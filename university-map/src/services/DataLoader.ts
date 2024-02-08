@@ -8,23 +8,24 @@ interface IDataLoader {
 }
 
 class DataLoader implements IDataLoader {
-  private static instance: DataLoader | null = null;
-  private static cookies = parseCookies();
+  private static Instance: DataLoader | null = null;
+  private static Cookies = parseCookies();
+  private static Endpoint = window.location.origin;
 
   private constructor() {
     // Private constructor to prevent direct instantiation
   }
 
   public static getInstance(): DataLoader {
-    if (!DataLoader.instance) {
-      DataLoader.instance = new DataLoader();
+    if (!DataLoader.Instance) {
+      DataLoader.Instance = new DataLoader();
     }
-    return DataLoader.instance;
+    return DataLoader.Instance;
   }
 
   public async getUnivLocations(): Promise<UniversityLocation[]> {
     try {
-      const response = await fetch('universities/locations.json');
+      const response = await fetch(`${DataLoader.Endpoint}/universities/locations.json`);
       const data = await response.json();
       const universities: UniversityLocation[] = data.map((univ: any) => {
         const locations: Location[] = univ.location.map((loc: any) => new Location(loc.name, loc.coordinates));
@@ -46,17 +47,17 @@ class DataLoader implements IDataLoader {
     university: string = 'National Cheng Kung University',
   ): Promise<UniversityInfo> {
     try {
-      const locale = DataLoader.cookies.NEXT_LOCALE;
+      const locale = DataLoader.Cookies.NEXT_LOCALE;
       let localeData = null;
       if (locale !== 'en') {
-        const response = await fetch(`universities/${country}/${university}/${locale}.yml`)
+        const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/${locale}.yml`)
         if (response.ok) {
           localeData = yaml.load(await response.text()) as any;
         }
       }
 
       let enData = null;
-      const response = await fetch(`universities/${country}/${university}/en.yml`)
+      const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/en.yml`)
       if (response.ok) {
         enData = yaml.load(await response.text()) as any;
       }
