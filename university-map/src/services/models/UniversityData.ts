@@ -1,4 +1,4 @@
-import { LatLngTuple } from "leaflet";
+import { LatLngTuple } from 'leaflet';
 
 // public/universities/locations.json
 class Location {

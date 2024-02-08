@@ -9,8 +9,8 @@ interface IDataLoader {
 
 class DataLoader implements IDataLoader {
   private static Instance: DataLoader | null = null;
-  private static Cookies = parseCookies();
-  private static Endpoint = window.location.origin;
+  private static Cookies: any = null;
+  private static Endpoint: string = '';
 
   private constructor() {
     // Private constructor to prevent direct instantiation
@@ -19,6 +19,10 @@ class DataLoader implements IDataLoader {
   public static getInstance(): DataLoader {
     if (!DataLoader.Instance) {
       DataLoader.Instance = new DataLoader();
+      DataLoader.Cookies = parseCookies();
+      if (typeof window !== 'undefined') {
+        DataLoader.Endpoint = window.location.origin;
+      }
     }
     return DataLoader.Instance;
   }
@@ -50,14 +54,14 @@ class DataLoader implements IDataLoader {
       const locale = DataLoader.Cookies.NEXT_LOCALE;
       let localeData = null;
       if (locale !== 'en') {
-        const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/${locale}.yml`)
+        const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/${locale}.yml`);
         if (response.ok) {
           localeData = yaml.load(await response.text()) as any;
         }
       }
 
       let enData = null;
-      const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/en.yml`)
+      const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/en.yml`);
       if (response.ok) {
         enData = yaml.load(await response.text()) as any;
       }

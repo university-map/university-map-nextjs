@@ -1,13 +1,13 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation'
-import dynamic from 'next/dynamic'
+import { useParams } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import DataLoader from '@/services/DataLoader';
 import { UniversityInfo } from '@/services/models';
 
 
 const InfoCard = dynamic(() => import('@/components/InfoCard/InfoCard'), { ssr: false });
-const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false })
+const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false });
 
 export default function Home() {
   const { locale, country, university } = useParams();
@@ -24,13 +24,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    updateRoute(country as string, university as string);
-  }, []);
+    dataLoader.getUnivInfo(decodeURI(country as string), decodeURI(university as string))
+      .then((res) => setSelectedUniv(res));
+  }, [country, university, dataLoader]);
 
   return (
     <main>
       <InfoCard universityInfo={selectedUniv} />
       <Map onMarkerClick={updateRoute} />
     </main>
-  )
+  );
 }
