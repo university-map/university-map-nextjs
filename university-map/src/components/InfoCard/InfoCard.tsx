@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Tabs } from '@mantine/core';
 import Image from 'next/image';
-import styles from './InfoCard.module.css'
+import styles from './InfoCard.module.css';
 import InfoCardOverview from './InfoCardOverview';
 import { UniversityInfo } from '@/services/models';
 

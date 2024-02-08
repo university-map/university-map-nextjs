@@ -1,10 +1,9 @@
 'use client';
- 
 import Error from 'next/error';
- 
+
 export default function NotFound() {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body suppressHydrationWarning={true} >
         <Error statusCode={404} />
       </body>

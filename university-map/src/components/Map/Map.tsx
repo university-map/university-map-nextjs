@@ -5,8 +5,8 @@ import DataLoader from '@/services/DataLoader';
 import 'leaflet/dist/leaflet.css';
 
 const markerIcon = new L.Icon({
-  iconUrl: "/leaflet-color-markers/marker-icon-2x-blue.png",
-  shadowUrl: "/leaflet-color-markers/marker-shadow.png",
+  iconUrl: '/leaflet-color-markers/marker-icon-2x-blue.png',
+  shadowUrl: '/leaflet-color-markers/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -45,10 +45,10 @@ const MapMarker: React.FC<{
       </Popup>
     </Marker>
   );
-}
+};
 
 const Map: React.FC<{
-  onMarkerClick: (country: string, universityName: string) => void 
+  onMarkerClick: (country: string, universityName: string) => void
 }> = ({
   onMarkerClick
 }) => {
@@ -76,25 +76,25 @@ const Map: React.FC<{
       setMarkers(newMarkers);
     };
     fetchData();
-  }, []);
+  }, [dataLoader, onMarkerClick]);
 
   return (
     <MapContainer
       center={[22.996900745680346, 120.21685639625197]}
       zoom={13}
       scrollWheelZoom={true}
-      style={{ height: "100%" }}
+      style={{ height: '100%' }}
       /* use bottomright zoom control instead */
       zoomControl={false}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       />
-      <ZoomControl position="bottomright" />
+      <ZoomControl position='bottomright' />
       {markers}
     </MapContainer>
   );
-}
+};
 
 export default Map;
