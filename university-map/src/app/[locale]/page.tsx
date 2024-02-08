@@ -7,13 +7,6 @@ import { UniversityInfo } from '@/services/models';
 const InfoCard = dynamic(() => import('@/components/InfoCard/InfoCard'), { ssr: false });
 const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false })
 
-class SelectedUniversity {
-  constructor(
-    public country: string,
-    public name: string,
-  ) {}
-}
-
 export default function Home() {
   const [selectedUniv, setSelectedUniv] = useState(new UniversityInfo());
   const dataLoader = DataLoader.getInstance();
