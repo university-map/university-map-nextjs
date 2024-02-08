@@ -31,5 +31,18 @@
         ]
       }
     ]
+  },
+  {
+    "name": "National Tsing Hua University",
+    "country": "Taiwan",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          24.796893583808767,
+          120.99644335317485
+        ]
+      }
+    ]
   }
 ]

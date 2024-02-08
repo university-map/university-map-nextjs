@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 import '../globals.css'
 
 export const metadata: Metadata = {
@@ -18,8 +20,13 @@ export default function LocaleLayout({
 
   return (
     <html suppressHydrationWarning={true} lang={locale}>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <body>{children}</body>
+        <body>
+          <MantineProvider>{children}</MantineProvider>
+        </body>
       </NextIntlClientProvider>
     </html>
   )
