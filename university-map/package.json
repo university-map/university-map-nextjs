@@ -10,9 +10,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.5.1",
     "@mantine/core": "^7.5.1",
     "@mantine/hooks": "^7.5.1",
-    "antd": "^5.12.6",
+    "embla-carousel-autoplay": "^7.1.0",
+    "embla-carousel-react": "^7.1.0",
     "leaflet": "^1.9.4",
     "next": "14.0.4",
     "next-intl": "^3.5.2",

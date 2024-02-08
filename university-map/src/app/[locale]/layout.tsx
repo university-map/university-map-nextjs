@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 import '../globals.css'
 
 export const metadata: Metadata = {
