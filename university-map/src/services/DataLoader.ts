@@ -1,4 +1,3 @@
-import { parseCookies } from 'nookies';
 import yaml from 'js-yaml';
 import { Location, UniversityLocation, UniversityInfo } from './models';
 
@@ -9,7 +8,6 @@ interface IDataLoader {
 
 class DataLoader implements IDataLoader {
   private static Instance: DataLoader | null = null;
-  private static Cookies: any = null;
   private static Endpoint: string = '';
 
   private constructor() {
@@ -19,7 +17,6 @@ class DataLoader implements IDataLoader {
   public static getInstance(): DataLoader {
     if (!DataLoader.Instance) {
       DataLoader.Instance = new DataLoader();
-      DataLoader.Cookies = parseCookies();
       if (typeof window !== 'undefined') {
         DataLoader.Endpoint = window.location.origin;
       }
@@ -49,9 +46,9 @@ class DataLoader implements IDataLoader {
   public async getUnivInfo(
     country: string = 'Taiwan',
     university: string = 'National Cheng Kung University',
+    locale: string = 'en'
   ): Promise<UniversityInfo> {
     try {
-      const locale = DataLoader.Cookies.NEXT_LOCALE;
       let localeData = null;
       if (locale !== 'en') {
         const response = await fetch(`${DataLoader.Endpoint}/universities/${country}/${university}/${locale}.yml`);
