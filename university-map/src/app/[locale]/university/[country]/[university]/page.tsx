@@ -2,12 +2,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import InfoCard from '@/components/InfoCard/InfoCard';
 import DataLoader from '@/services/DataLoader';
 import { UniversityInfo } from '@/services/models';
 
-
-const InfoCard = dynamic(() => import('@/components/InfoCard/InfoCard'), { ssr: false });
-const Map = dynamic(() => import('@/components/Map/Map'), { ssr: false });
+const Map = dynamic(() => import('@/components/Map'), { ssr: false });
 
 export default function Home() {
   const { locale, country, university } = useParams();

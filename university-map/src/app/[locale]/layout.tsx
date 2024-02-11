@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import SideNavbar from '@/components/SideNavbar';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import '../globals.css';
@@ -26,7 +27,14 @@ export default function LocaleLayout({
       </head>
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body>
-          <MantineProvider>{children}</MantineProvider>
+          <MantineProvider>
+            <div style={{ height: '100vh', display: 'flex' }}>
+              <SideNavbar />
+              <div style={{ height: '100%', flexGrow: 1, paddingLeft: '50px' }}>
+                {children}
+              </div>
+            </div>
+          </MantineProvider>
         </body>
       </NextIntlClientProvider>
     </html>
