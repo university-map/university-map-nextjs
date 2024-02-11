@@ -13,7 +13,7 @@ const InfoCardOverview: React.FC<{
 }> = (props) => {
   const t = useTranslations('InfoCard');
   const autoplay = useRef(Autoplay({ delay: 2000 }));
-  const slides = props.universityInfo.gallery.map((image, index) => (
+  const slides = props.universityInfo.gallery.map((image, index) =>
     <Carousel.Slide key={index}>
       <Image
         component={NextImage}
@@ -24,7 +24,7 @@ const InfoCardOverview: React.FC<{
         src={image}
       />
     </Carousel.Slide>
-  ));
+  );
 
   return (
     <div>

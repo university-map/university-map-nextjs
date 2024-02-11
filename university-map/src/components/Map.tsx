@@ -56,7 +56,7 @@ const MapMarker: React.FC<{
 const Map: React.FC<{
   onMarkerClick: (country: string, universityName: string) => void
 }> = (props) => {
-  const { locale, country, university } = useParams();
+  const { country, university } = useParams();
   const [markers, setMarkers] = useState([] as any[]);
   const dataLoader = DataLoader.getInstance();
 

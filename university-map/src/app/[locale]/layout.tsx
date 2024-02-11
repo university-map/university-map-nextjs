@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
-import SideNavbar from '@/components/SideNavbar';
+import SideNavbar from '@/components/Nav/SideNavbar';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import '../globals.css';

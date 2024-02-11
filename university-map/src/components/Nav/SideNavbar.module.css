@@ -33,3 +33,14 @@
     }
   }
 }
+
+.panel {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 150px;
+  height: 120px;
+  background-color: transparent;
+  z-index: 600;
+  padding: 0;
+}

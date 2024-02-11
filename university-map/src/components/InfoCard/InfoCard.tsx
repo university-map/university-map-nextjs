@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Tabs } from '@mantine/core';
 import Image from 'next/image';
-import styles from './InfoCard.module.css';
 import InfoCardOverview from './InfoCardOverview';
 import { UniversityInfo } from '@/services/models';
+import styles from './InfoCard.module.css';
 
 const InfoCard: React.FC<{
   universityInfo: UniversityInfo,
