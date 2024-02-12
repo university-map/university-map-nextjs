@@ -122,7 +122,7 @@ const Map: React.FC<{
   }, [country, university, dataLoader, markers, handleMarkerClick]);
 
   const center = cookies.center ? JSON.parse(cookies.center) : [22.996900745680346, 120.21685639625197];
-  const zoom = cookies.zoom ? parseInt(cookies.zoom) : 13;
+  const zoom = cookies.zoom ? parseInt(cookies.zoom) : 18;
   return (
     <MapContainer
       center={center}

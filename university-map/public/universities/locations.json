@@ -1,5 +1,18 @@
 [
   {
+    "name": "Tsinghua University",
+    "country": "China",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          39.99987276788524,
+          116.32633659183877
+        ]
+      }
+    ]
+  },
+  {
     "name": "National Cheng Kung University",
     "country": "Taiwan",
     "location": [
@@ -41,6 +54,71 @@
         "coordinates": [
           24.796893583808767,
           120.99644335317485
+        ]
+      }
+    ]
+  },
+  {
+    "name": "University of Cambridge",
+    "country": "United Kingdom",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          52.20555624964476,
+          0.11314384499981649
+        ]
+      }
+    ]
+  },
+  {
+    "name": "University of Oxford",
+    "country": "United Kingdom",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          51.75526524099619,
+          -1.2545852667835287
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Harvard University",
+    "country": "United States",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          42.37482288761835,
+          -71.11818747532095
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Massachusetts Institute of Technology",
+    "country": "United States",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          42.36043149339396,
+          -71.09426317806926
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Stanford University",
+    "country": "United States",
+    "location": [
+      {
+        "name": "Main Campus",
+        "coordinates": [
+          37.42798659476949,
+          -122.17017749899045
         ]
       }
     ]
