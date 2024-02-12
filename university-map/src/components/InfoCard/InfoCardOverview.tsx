@@ -2,11 +2,10 @@
 import React, { useRef } from 'react';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Divider, Image } from '@mantine/core';
+import { Divider, Image, Title, Text } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { UniversityInfo } from '@/services/models';
-import styles from './InfoCardOverview.module.css';
 
 const InfoCardOverview: React.FC<{
   universityInfo: UniversityInfo,
@@ -28,14 +27,14 @@ const InfoCardOverview: React.FC<{
   );
 
   return (
-    <div>
-      <div className={styles.Description}>
+    <>
+      <Text lineClamp={12} m='sm'>
         {props.universityInfo.introduction}
-      </div>
-      <Divider my="md" />
-      <div className={styles.SectionTitle}>
+      </Text>
+      <Divider m="sm" />
+      <Title order={3} m='sm'>
         {t('gallery')}
-      </div>
+      </Title>
       <Carousel
         loop
         height={240}
@@ -45,7 +44,7 @@ const InfoCardOverview: React.FC<{
       >
         {slides}
       </Carousel>
-    </div>
+    </>
   );
 };
 
