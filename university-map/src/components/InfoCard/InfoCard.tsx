@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Tabs } from '@mantine/core';
-import Image from 'next/image';
+import { Tabs, Image } from '@mantine/core';
+import NextImage from 'next/image';
 import InfoCardOverview from './InfoCardOverview';
 import { UniversityInfo } from '@/services/models';
 import styles from './InfoCard.module.css';
@@ -16,8 +16,13 @@ const InfoCard: React.FC<{
     <div className={styles.InfoCard}>
       <div className={styles.Banner}>
         <Image
-          fill sizes='100vw' alt='University Banner' style={{ objectFit: 'cover' }}
+          component={NextImage}
+          fill
+          sizes='100vw'
+          alt='University Banner'
+          style={{ objectFit: 'cover' }}
           src={props.universityInfo.banner}
+          fallbackSrc='https://placehold.co/400x240/white/gray?text=Not%20Found'
         />
       </div>
       <div className={styles.Title}>
