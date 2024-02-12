@@ -1,6 +1,6 @@
 import { useParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import { Paper, Select } from '@mantine/core';
+import { Select } from '@mantine/core';
 import { usePathname, useRouter } from '@/navigation';
 
 
@@ -20,19 +20,17 @@ const LanguagePicker: React.FC = () => {
   };
 
   return (
-    <Paper>
-      <Select
-        comboboxProps={{ withinPortal: false, offset: 0, }}
-        radius='xs'
-        checkIconPosition='left'
-        maxDropdownHeight={150}
-        data={Object.values(languages)}
-        dropdownOpened
-        placeholder=''
-        defaultValue={languages[locale as string]}
-        onChange={(value) => updateLanguage(value as string)}
-      />
-    </Paper>
+    <Select
+      comboboxProps={{ withinPortal: false, offset: 0, }}
+      radius='xs'
+      checkIconPosition='left'
+      maxDropdownHeight={150}
+      data={Object.values(languages)}
+      dropdownOpened
+      placeholder=''
+      defaultValue={languages[locale as string]}
+      onChange={(value) => updateLanguage(value as string)}
+    />
   );
 };
 

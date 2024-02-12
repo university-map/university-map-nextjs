@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl, useMap } from 'react-leaflet';
 import { useParams } from 'next/navigation';
 import L from 'leaflet';
+import { setCookie, parseCookies } from 'nookies';
 import DataLoader from '@/services/DataLoader';
 import 'leaflet/dist/leaflet.css';
-
 
 const blueIcon = new L.Icon({
   iconUrl: '/leaflet-color-markers/marker-icon-2x-blue.png',
@@ -24,6 +24,9 @@ const redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
+/**
+ * MapMarker
+ */
 const MapMarker: React.FC<{
   country: string,
   universityName: string,
@@ -53,11 +56,28 @@ const MapMarker: React.FC<{
   );
 };
 
+/**
+ * Map and MapController
+ */
+const MapController = () => {
+  const map = useMap();
+  setCookie(null, 'center', JSON.stringify(map.getCenter()), {
+    maxAge: 60 * 60, // 1 hour
+    path: '/',
+  });
+  setCookie(null, 'zoom', map.getZoom().toString(), {
+    maxAge: 60 * 60, // 1 hour
+    path: '/',
+  });
+  return <></>;
+};
+
 const Map: React.FC<{
   onMarkerClick: (country: string, universityName: string) => void
 }> = (props) => {
   const { country, university } = useParams();
   const [markers, setMarkers] = useState([] as any[]);
+  const cookies = parseCookies();
   const dataLoader = DataLoader.getInstance();
 
   const handleMarkerClick = useCallback((country: string, universityName: string) => {
@@ -101,15 +121,18 @@ const Map: React.FC<{
     fetchData();
   }, [country, university, dataLoader, markers, handleMarkerClick]);
 
+  const center = cookies.center ? JSON.parse(cookies.center) : [22.996900745680346, 120.21685639625197];
+  const zoom = cookies.zoom ? parseInt(cookies.zoom) : 13;
   return (
     <MapContainer
-      center={[22.996900745680346, 120.21685639625197]}
-      zoom={13}
+      center={center}
+      zoom={zoom}
       scrollWheelZoom={true}
       style={{ height: '100%' }}
       /* use bottomright zoom control instead */
       zoomControl={false}
     >
+      <MapController />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
