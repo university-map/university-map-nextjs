@@ -1,5 +1,6 @@
 name: "國立臺灣大學"
 address: "臺灣臺北市大安區羅斯福路四段1號"
+website: "https://www.ntu.edu.tw"
 locations:
   - name: "校本部"
     coordinates: [25.017491194856326, 121.53968742646664]

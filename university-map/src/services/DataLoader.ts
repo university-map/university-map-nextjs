@@ -67,6 +67,7 @@ class DataLoader implements IDataLoader {
         locale,
         localeData?.name ?? enData?.name ?? '',
         localeData?.address ?? enData?.address ?? '',
+        localeData?.website ?? enData?.website ?? '',
         localeData?.banner ?? enData?.banner ?? '',
         localeData?.introduction ?? enData?.introduction ?? '',
         localeData?.gallery ?? enData?.gallery ?? [],

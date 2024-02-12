@@ -2,10 +2,42 @@
 import React, { useRef } from 'react';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Divider, Image, Title, Text } from '@mantine/core';
+import { Divider, Image, Title, Text, rem, CopyButton, Tooltip, ActionIcon, Grid } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { IoIosPin, IoMdCheckbox, IoMdCopy, IoMdHome } from 'react-icons/io';
 import { UniversityInfo } from '@/services/models';
+
+interface CopyLineProps {
+  icon: typeof IoIosPin;
+  text: string;
+}
+
+function CopyLine({icon: Icon, text}: CopyLineProps) {
+  return (
+    <Grid gutter='xs' mx='xs' mt='xs'>
+      <Grid.Col span={1}>
+        <Icon style={{ width: rem(24), height: rem(24) }} />
+      </Grid.Col>
+      <Grid.Col span={10}>
+        <Text lineClamp={1}>
+          {text}
+        </Text>
+      </Grid.Col>
+      <Grid.Col span={1}>
+        <CopyButton value={text} timeout={2000}>
+          {({ copied, copy }) =>
+            <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position='right'>
+              <ActionIcon color={copied ? 'teal' : 'gray'} variant='subtle' onClick={copy}>
+                {copied ? <IoMdCheckbox style={{ width: rem(24), height: rem(24) }} /> : <IoMdCopy style={{ width: rem(24), height: rem(24) }} />}
+              </ActionIcon>
+            </Tooltip>
+          }
+        </CopyButton>
+      </Grid.Col>
+    </Grid>
+  );
+}
 
 const InfoCardOverview: React.FC<{
   universityInfo: UniversityInfo,
@@ -28,11 +60,14 @@ const InfoCardOverview: React.FC<{
 
   return (
     <>
-      <Text lineClamp={12} m='sm'>
+      <CopyLine icon={IoIosPin} text={props.universityInfo.address} />
+      <CopyLine icon={IoMdHome} text={props.universityInfo.website} />
+      <Divider m='xs' />
+      <Text lineClamp={12} m='xs'>
         {props.universityInfo.introduction}
       </Text>
-      <Divider m="sm" />
-      <Title order={3} m='sm'>
+      <Divider m='xs' />
+      <Title order={3} m='xs'>
         {t('gallery')}
       </Title>
       <Carousel

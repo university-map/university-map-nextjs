@@ -1,5 +1,6 @@
 name: "National Taiwan University"
 address: "No. 1, Sec. 4, Roosevelt Rd., Taipei 106319, Taiwan (R.O.C.)"
+website: "https://www.ntu.edu.tw/english"
 locations:
   - name: "Main Campus"
     coordinates: [25.017491194856326, 121.53968742646664]

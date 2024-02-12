@@ -1,5 +1,6 @@
 name: "National Cheng Kung University"
 address: "No.1, University Road, Tainan City 701, Taiwan (R.O.C)"
+website: "https://www.ncku.edu.tw/index.php?Lang=en"
 locations:
   - name: "Main Campus"
     coordinates: [22.9987772261614, 120.21648234565666]

@@ -25,7 +25,7 @@ const InfoCard: React.FC<{
           fallbackSrc='https://placehold.co/400x240/white/gray?text=Not%20Found'
         />
       </div>
-      <Title order={2} m='sm'>
+      <Title order={2} m='xs'>
         {props.universityInfo.name}
       </Title>
       <Tabs
