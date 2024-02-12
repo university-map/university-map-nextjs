@@ -3,7 +3,7 @@ import { Location, UniversityLocation, UniversityInfo } from './models';
 
 interface IDataLoader {
   getUnivLocations(): Promise<UniversityLocation[]>
-  getUnivInfo(country: string, university: string): Promise<UniversityInfo>
+  getUnivInfo(country: string, university: string, locale: string): Promise<UniversityInfo>
 }
 
 class DataLoader implements IDataLoader {

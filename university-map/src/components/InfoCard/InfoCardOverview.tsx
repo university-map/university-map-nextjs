@@ -22,6 +22,7 @@ const InfoCardOverview: React.FC<{
         alt='Gallery Image'
         style={{ objectFit: 'cover' }}
         src={image}
+        fallbackSrc='https://placehold.co/400x240/white/gray?text=Not%20Found'
       />
     </Carousel.Slide>
   );
