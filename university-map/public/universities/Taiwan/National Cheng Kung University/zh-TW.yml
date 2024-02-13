@@ -1,10 +1,9 @@
 name: "國立成功大學"
 address: "臺灣臺南市東區大學路一號"
+website: "https://www.ncku.edu.tw"
 locations:
-  - name: "校本部"
+  - name: "主校區"
     coordinates: [22.9987772261614, 120.21648234565666]
-  - name: "歸仁校區"
-    coordinates: [22.93788805281445, 120.27485576268575]
 acronyms: ["NCKU", "成大"]
 banner: "https://web.ncku.edu.tw/var/file/0/1000/img/495849468.jpg"
 introduction: >-

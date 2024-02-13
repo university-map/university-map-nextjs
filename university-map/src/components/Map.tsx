@@ -121,8 +121,9 @@ const Map: React.FC<{
     fetchData();
   }, [country, university, dataLoader, markers, handleMarkerClick]);
 
+  const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180));
   const center = cookies.center ? JSON.parse(cookies.center) : [22.996900745680346, 120.21685639625197];
-  const zoom = cookies.zoom ? parseInt(cookies.zoom) : 13;
+  const zoom = cookies.zoom ? parseInt(cookies.zoom) : 18;
   return (
     <MapContainer
       center={center}
@@ -131,6 +132,8 @@ const Map: React.FC<{
       style={{ height: '100%' }}
       /* use bottomright zoom control instead */
       zoomControl={false}
+      maxBounds={bounds}
+      minZoom={2}
     >
       <MapController />
       <TileLayer

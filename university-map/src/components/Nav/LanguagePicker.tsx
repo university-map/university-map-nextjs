@@ -2,11 +2,7 @@ import { useParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { Select } from '@mantine/core';
 import { usePathname, useRouter } from '@/navigation';
-
-const languages: { [locale: string]: string; } = {
-  'en': 'English',
-  'zh-TW': '正體中文'
-};
+import { languages } from '@/i18n';
 
 const LanguagePicker: React.FC = () => {
   const params = useParams();

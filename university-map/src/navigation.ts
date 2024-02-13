@@ -1,6 +1,6 @@
 import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
+import { supportedLocales } from './i18n';
 
-export const locales = ['en', 'zh-TW'] as const;
 export const localePrefix = 'always';
 
 // The `pathnames` object holds pairs of internal
@@ -17,7 +17,7 @@ export const pathnames = {
 
 export const { Link, redirect, usePathname, useRouter } =
   createLocalizedPathnamesNavigation({
-    locales,
+    locales: supportedLocales,
     pathnames,
     localePrefix
   });

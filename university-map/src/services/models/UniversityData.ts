@@ -22,6 +22,7 @@ class UniversityInfo {
     public locale: string = '',
     public name: string = '',
     public address: string = '',
+    public website: string = '',
     public banner: string = '',
     public introduction: string = '',
     public gallery: string[] = [],

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Tabs, Image } from '@mantine/core';
+import { Tabs, Image, Title } from '@mantine/core';
 import NextImage from 'next/image';
 import InfoCardOverview from './InfoCardOverview';
 import { UniversityInfo } from '@/services/models';
@@ -25,9 +25,9 @@ const InfoCard: React.FC<{
           fallbackSrc='https://placehold.co/400x240/white/gray?text=Not%20Found'
         />
       </div>
-      <div className={styles.Title}>
+      <Title order={2} m='xs'>
         {props.universityInfo.name}
-      </div>
+      </Title>
       <Tabs
         value={activeTab}
         onChange={setActiveTab}
