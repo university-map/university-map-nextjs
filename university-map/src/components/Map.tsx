@@ -61,7 +61,6 @@ const MapMarker: React.FC<{
  */
 const MapController = () => {
   const map = useMap();
-  console.log(map.getZoom());
   setCookie(null, 'center', JSON.stringify(map.getCenter()), {
     maxAge: 60 * 60, // 1 hour
     path: '/',

@@ -44,7 +44,7 @@ const InfoCardOverview: React.FC<{
 }> = (props) => {
   const t = useTranslations('InfoCard');
   const autoplay = useRef(Autoplay({ delay: 2000 }));
-  const pictures = props.universityInfo.gallery.length > 0 
+  const pictures = props.universityInfo.gallery.length > 0
     ? props.universityInfo.gallery
     : ['https://placehold.co/400x240/white/gray?text=No%20Picture%20Yet'];
 
