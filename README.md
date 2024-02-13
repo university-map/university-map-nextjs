@@ -19,3 +19,11 @@ npm run dev
 ```
 
 Go to http://localhost:3000.
+
+## Acknowledgments for Data and Code Sources
+
+- Wikipedia
+- Google Map
+- Unsplash
+- OpenStreetMap, Leaflet, and all free software
+- Each University's Official Website
