@@ -61,6 +61,7 @@ const MapMarker: React.FC<{
  */
 const MapController = () => {
   const map = useMap();
+  console.log(map.getZoom());
   setCookie(null, 'center', JSON.stringify(map.getCenter()), {
     maxAge: 60 * 60, // 1 hour
     path: '/',
@@ -121,6 +122,7 @@ const Map: React.FC<{
     fetchData();
   }, [country, university, dataLoader, markers, handleMarkerClick]);
 
+  const bounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180));
   const center = cookies.center ? JSON.parse(cookies.center) : [22.996900745680346, 120.21685639625197];
   const zoom = cookies.zoom ? parseInt(cookies.zoom) : 18;
   return (
@@ -131,6 +133,8 @@ const Map: React.FC<{
       style={{ height: '100%' }}
       /* use bottomright zoom control instead */
       zoomControl={false}
+      maxBounds={bounds}
+      minZoom={2}
     >
       <MapController />
       <TileLayer

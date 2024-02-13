@@ -2,7 +2,7 @@ name: "Harvard University"
 address: "Massachusetts Hall Cambridge, MA 02138 United States"
 website: "https://www.harvard.edu"
 locations:
-  - name: "Main Campus"
+  - name: "Cambridge Campus"
     coordinates: [42.37482288761835, -71.11818747532095]
 acronyms: ["Harvard"]
 banner: "https://images.unsplash.com/photo-1559135197-8a45ea74d367"

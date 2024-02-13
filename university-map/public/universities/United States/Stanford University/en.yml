@@ -2,7 +2,7 @@ name: "Stanford University"
 address: "Stanford, CA 94305 United States"
 website: "http://www.stanford.edu"
 locations:
-  - name: "Main Campus"
+  - name: "Central Campus"
     coordinates: [37.42798659476949, -122.17017749899045]
 acronyms: ["Stanford"]
 banner: "https://images.unsplash.com/photo-1619139081320-38dc9778d051"

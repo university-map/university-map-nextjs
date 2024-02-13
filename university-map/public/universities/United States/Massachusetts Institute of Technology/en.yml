@@ -2,7 +2,7 @@ name: "Massachusetts Institute of Technology (MIT)"
 address: "77 Massachusetts Avenue, Cambridge, MA 02139 United States"
 website: "https://web.mit.edu"
 locations:
-  - name: "Main Campus"
+  - name: "Cambridge Campus"
     coordinates: [42.36043149339396, -71.09426317806926]
 acronyms: ["MIT"]
 banner: "https://images.unsplash.com/photo-1537888692311-8a7fb3e9f374"
