@@ -2,7 +2,7 @@
 
 ![](./images/demo.png)
 
-This is the original project for the University Map using NextJS 14 App Routing. This repository is not actively maintained because it cannot be exported as a static website and hosted on Github Pages.
+This is the original project for the [University Map](https://github.com/university-map/university-map) using NextJS 14 App Routing. This repository is not actively maintained because it cannot be exported as a static website and hosted on Github Pages.
 
 ## How to Run
 
